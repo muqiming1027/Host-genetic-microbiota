@@ -36,3 +36,4 @@ paste merge.txt 2.txt > merge1.txt && mv merge1.txt merge.txt
 rm 1.txt 2.txt
 done
 printf "<<<< Finish!!! >>>>"
+ 
