@@ -52,3 +52,4 @@ do
 --threads 60
 rm -r ${i}_kraken2-metaphlan.mpa.txt
 done
+ 
