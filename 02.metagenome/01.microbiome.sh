@@ -1,5 +1,5 @@
 #!/bin/sh
-file=$(sed -n "1,300p" sample.txt)
+file=$(sed -n "1,789p" sample.txt)
 for i in $file
 do
 /home/qmmou/anaconda3/envs/kaiju/bin/fastp -i /home/qmmou/metagenome/raw.data/${i}_1.fastq.gz -o ${i}_1.cutadapt.fastq.gz \
@@ -37,4 +37,18 @@ rm -r ${i}_bothEndsmapped.bam
 rm -r ${i}_bothEndsmapped_sorted.bam
 rm -r ${i}_1.cutadapt.fastq.gz ${i}_2.cutadapt.fastq.gz
 printf "Step 6: Finish cleaning the host  at `eval date +%Y%m%d"_"%H:%M:%S`\n" >> $i'.calling.log'
+done
+
+#######################step3.kraken2###################
+file=$(sed -n "1,789p" sample.txt)
+for i in $file
+do
+/home/qmmou/anaconda3/envs/kaiju/bin/kraken2 --db /home/qmmou/index/kraken2/standard \
+--gzip-compressed \
+./${i}_r1.fastq.gz ./${i}_r2.fastq.gz \
+--report ${i}_kraken2-metaphlan.mpa.report \
+--use-mpa-style \
+--output ${i}_kraken2-metaphlan.mpa.txt \
+--threads 60
+rm -r ${i}_kraken2-metaphlan.mpa.txt
 done
