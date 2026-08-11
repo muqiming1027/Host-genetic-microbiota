@@ -36,7 +36,7 @@ rm -r ${i}_mapped_and_unmapped.bam
 rm -r ${i}_bothEndsmapped.bam
 rm -r ${i}_bothEndsmapped_sorted.bam
 rm -r ${i}_1.cutadapt.fastq.gz ${i}_2.cutadapt.fastq.gz
-printf "Step 6: Finish cleaning the host  at `eval date +%Y%m%d"_"%H:%M:%S`\n" >> $i'.calling.log'
+printf "Step 2: Finish cleaning the host  at `eval date +%Y%m%d"_"%H:%M:%S`\n" >> $i'.calling.log'
 done
 
 #######################step3.kraken2###################
